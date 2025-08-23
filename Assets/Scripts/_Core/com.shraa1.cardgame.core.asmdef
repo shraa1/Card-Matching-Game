@@ -1,7 +1,9 @@
 {
     "name": "com.shraa1.cardgame.core",
     "rootNamespace": "Shraa1.CardGame.Core",
-    "references": [],
+    "references": [
+        "GUID:e439f714a1bf5481586d4827a8fd0d8e"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

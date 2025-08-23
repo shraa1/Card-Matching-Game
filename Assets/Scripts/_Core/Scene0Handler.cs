@@ -10,6 +10,11 @@ namespace Shraa1.CardGame.Core {
 
 		#region Unity Methods
 		private void Awake() {
+			//Initialize services. For now, initialize all, but ideally, initialize game provider when game scene/prefab/context loads
+			ServiceHandler.Init((int)ServicesScope.GLOBAL);
+			ServiceHandler.Init((int)ServicesScope.LOBBY);
+			ServiceHandler.Init((int)ServicesScope.GAME);
+
 			_ = StartCoroutine(LoadAllData());
 		}
 		#endregion Unity Methods

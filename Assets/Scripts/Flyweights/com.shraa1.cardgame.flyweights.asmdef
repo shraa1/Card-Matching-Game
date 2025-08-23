@@ -1,9 +1,7 @@
 {
-    "name": "com.shraa1.cardgame.views",
-    "rootNamespace": "Shraa1.CardGame.Views",
+    "name": "com.shraa1.cardgame.flyweights",
+    "rootNamespace": "Shraa1.CardGame.Flyweights",
     "references": [
-        "GUID:e439f714a1bf5481586d4827a8fd0d8e",
-        "GUID:9ac3c256f0a8a45099aac9468049d873",
         "GUID:0cca0b1552a6d44b18f239dd428a8439"
     ],
     "includePlatforms": [],

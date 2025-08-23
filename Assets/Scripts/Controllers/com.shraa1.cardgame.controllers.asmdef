@@ -2,7 +2,10 @@
     "name": "com.shraa1.cardgame.controllers",
     "rootNamespace": "Shraa1.CardGame.Controllers",
     "references": [
-        "GUID:0cca0b1552a6d44b18f239dd428a8439"
+        "GUID:0cca0b1552a6d44b18f239dd428a8439",
+        "GUID:9ac3c256f0a8a45099aac9468049d873",
+        "GUID:e439f714a1bf5481586d4827a8fd0d8e",
+        "GUID:0e45779beadcf4be39dc608d8f80c3a4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

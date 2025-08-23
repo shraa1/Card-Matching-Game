@@ -1,9 +1,7 @@
 {
     "name": "com.shraa1.cardgame.models",
     "rootNamespace": "Shraa1.CardGame.Models",
-    "references": [
-        "GUID:0cca0b1552a6d44b18f239dd428a8439"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
