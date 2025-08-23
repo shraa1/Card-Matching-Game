@@ -1,0 +1,53 @@
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/UserSettings/
+/.[v]s/
+.gradle/
+ExportedObj/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.vsconfig
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+Recordings/
+
+# Unity3D generated meta files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+#User Added
+[Aa]ssets/[Ss]treaming[Aa]ssets/AssetBundles/
+[Aa]ssets/m_GameState.json
+[Aa]ssets/m_GameState.json.meta
+keystorePassword.txt
+
+# Unity3D generated file on crash reports
+sysinfo.txt
+
+# Builds
+*.apk
+*.unitypackage
+
+# Crashlytics generated file
+crashlytics-build.properties
+Assets/Saved Game Files.meta
+Assets/Saved Game Files/
+/.vscode
+Assets/Plugins/Sirenix
+Assets/Plugins/Sirenix.meta
