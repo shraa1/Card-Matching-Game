@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: FMFGames
+  companyName: Shraa1
   productName: Card Matching Game
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -158,8 +158,8 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.FMFGames.CardMatchingGame
-    Standalone: com.FMFGames.Card-Matching-Game
+    Android: com.Shraa1.CardMatchingGame
+    Standalone: com.Shraa1.Card-Matching-Game
   buildNumber:
     Standalone: 0
     iPhone: 0

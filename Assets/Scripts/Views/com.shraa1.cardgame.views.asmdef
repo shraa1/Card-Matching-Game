@@ -1,0 +1,14 @@
+{
+    "name": "com.shraa1.cardgame.views",
+    "rootNamespace": "Shraa1.CardGame.Views",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
