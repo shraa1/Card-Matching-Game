@@ -45,8 +45,12 @@ namespace Shraa1.CardGame.Controllers {
 					StartCoroutine((card as Card).WaitForCardFlipToFinish(() => {
 						ObjectPool<Card>.FreeToPool(card as Card);
 						ObjectPool<Card>.FreeToPool(c);
-						if (ObjectPool<Card>.AllInUseItems.Count == 0)
+						// When grid size is 3x3 or 5x5 or so, there will be 1 extra pending.
+						if (ObjectPool<Card>.AllInUseItems.Count == 0 || ObjectPool<Card>.AllInUseItems.Count == 1) {
+							//If there's the pending one, release it
+							ObjectPool<Card>.AllInUseItems.ForEach(x => ObjectPool<Card>.FreeToPool(x));
 							GameManager.GameOver();
+						}
 					}));
 				}
 				else {
