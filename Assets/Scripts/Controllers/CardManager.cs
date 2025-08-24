@@ -40,6 +40,7 @@ namespace Shraa1.CardGame.Controllers {
 				GlobalReferences.StatsManagerService.SetTurns(GlobalReferences.StatsManagerService.Turns + 1);
 				if (m_CurrentlyOpenCard.FrontFacingCardSprite == card.FrontFacingCardSprite) {
 					GlobalReferences.StatsManagerService.UpdateScore();
+					GlobalReferences.AudioManagerService.Play("Match");
 
 					if (GlobalReferences.StatsManagerService.Score > GlobalReferences.StatsManagerService.HighScore)
 						GlobalReferences.StatsManagerService.NewHighScore();
@@ -50,6 +51,7 @@ namespace Shraa1.CardGame.Controllers {
 						ObjectPool<Card>.FreeToPool(c);
 						// When grid size is 3x3 or 5x5 or so, there will be 1 extra pending.
 						if (ObjectPool<Card>.AllInUseItems.Count == 0 || ObjectPool<Card>.AllInUseItems.Count == 1) {
+							GlobalReferences.AudioManagerService.Play("Game Over");
 							//If there's the pending one, release it
 							ObjectPool<Card>.AllInUseItems.ForEach(x => ObjectPool<Card>.FreeToPool(x));
 							GameManager.GameOver();
@@ -57,6 +59,7 @@ namespace Shraa1.CardGame.Controllers {
 					}));
 				}
 				else {
+					GlobalReferences.AudioManagerService.Play("Mismatch");
 					GlobalReferences.StatsManagerService.SetStreak(0);
 					var c = m_CurrentlyOpenCard as Card;
 					StartCoroutine((card as Card).WaitForCardFlipToFinish(() => {
@@ -68,6 +71,8 @@ namespace Shraa1.CardGame.Controllers {
 				return;
 			}
 
+			//TODO could be placed in the Card's DoCardFlip
+			GlobalReferences.AudioManagerService.Play("Flip");
 			m_CurrentlyOpenCard = card;
 		}
 #endregion Inspector Implementation
