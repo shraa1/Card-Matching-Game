@@ -16,6 +16,11 @@ namespace Shraa1.CardGame.Core {
 		int Streak { get; }
 
 		/// <summary>
+		/// Number of turns already played, update that
+		/// </summary>
+		int Turns { get; }
+
+		/// <summary>
 		/// Update the score
 		/// </summary>
 		void UpdateScore();
@@ -29,5 +34,17 @@ namespace Shraa1.CardGame.Core {
 		/// Reset Stats
 		/// </summary>
 		void Reset();
+
+		/// <summary>
+		/// Set the streak's updated value
+		/// </summary>
+		/// <param name="streak">New streak</param>
+		void SetStreak(int streak);
+
+		/// <summary>
+		/// Set the turns' updated value
+		/// </summary>
+		/// <param name="turns">New turns count</param>
+		void SetTurns(int turns);
 	}
 }

@@ -61,6 +61,11 @@ namespace Shraa1.CardGame.Views {
 
 			m_PlayGameBtn.onClick.AddListener(PlayGame);
 		}
+
+		public void CloseGameScene() {
+			SceneManager.UnloadScene(GAME_SCENE_NAME);
+			m_LobbyCanvas.enabled = true;
+		}
 		#endregion Public Helper Methods
 
 		#region Private Helper Methods
@@ -82,7 +87,6 @@ namespace Shraa1.CardGame.Views {
 			SceneManager.sceneLoaded += SceneLoaded;
 			SceneManager.LoadScene(GAME_SCENE_NAME, LoadSceneMode.Additive);
 		}
-
 		#endregion Private Helper Methods
 	}
 }

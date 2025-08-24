@@ -26,6 +26,8 @@ namespace Shraa1.CardGame.Views {
 		#endregion Unity Methods
 
 		#region Public Helper Methods
+		public void UseLayoutGroup(bool activateLayoutGroup) => m_GridLayoutGroup.enabled = activateLayoutGroup;
+
 		public void Init(int x, int y) {
 			//TODO HACK FIXME, Ideal case don't use UI for doing this. What if uneven grid is to be used? GridLayout for this is not ideal.
 			m_GridLayoutGroup.constraintCount = y;

@@ -14,6 +14,7 @@ namespace Shraa1.CardGame.Controllers {
 		[SerializeField] private LobbyView m_LobbyView;
 
 		[SerializeField] private GameInfo m_GameInfo;
+		[SerializeField] private CardInfo m_CardInfo;
 		[SerializeField] private Card m_CardPrefabTemplate;
 		#endregion Inspector Variables
 
@@ -23,14 +24,18 @@ namespace Shraa1.CardGame.Controllers {
 
 		#region Inspector Implementation
 		public GameInfo GameInfo { get => m_GameInfo; }
+		public CardInfo CardInfo { get => m_CardInfo; }
 
 		public void StartGame(int x, int y) {
+			m_GameView.UseLayoutGroup(true);
 			m_GameView.Init(x, y);
 			StartCoroutine(WaitForGameSceneInitializations(x, y));
 		}
 
 		//TODO Create an interface instead of MonoBehaviour
 		public void SetGameView(MonoBehaviour gameView) => m_GameView = gameView as GameView;
+
+		public void GameOver() => m_LobbyView.CloseGameScene();
 		#endregion Inspector Implementation
 
 		#region Private Methods
@@ -38,6 +43,7 @@ namespace Shraa1.CardGame.Controllers {
 		private IEnumerator WaitForGameSceneInitializations(int x, int y) {
 			while (GlobalReferences.CardManagerService == null)
 				yield return null;
+			m_GameView.UseLayoutGroup(false);
 			GlobalReferences.CardManagerService.GameStarted(x, y);
 		}
 		#endregion Private Methods

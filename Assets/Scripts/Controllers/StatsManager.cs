@@ -8,18 +8,22 @@ namespace Shraa1.CardGame.Controllers {
 		public int Score { get => m_Score; }
 		public int HighScore { get => m_HighScore; }
 		public int Streak { get => m_Streak; }
+		public int Turns { get => m_Turns; }
 		public void UpdateScore() { }
 		public void NewHighScore() { }
+		public void SetStreak(int streak) => m_Streak = streak;
+		public void SetTurns(int turns) => m_Turns = turns;
 		#endregion Interface Implementation
 
 		#region Variables
 		private int m_Score = 0;
 		private int m_HighScore = 0;
 		private int m_Streak = 0;
+		private int m_Turns = 0;
 		#endregion Variables
 
 		#region Unity Methods
-		private void Awake() {
+		private void Start() {
 			GlobalReferences.Register<IStatsMangerService>(this);
 		}
 
@@ -31,6 +35,7 @@ namespace Shraa1.CardGame.Controllers {
 			m_Score = 0;
 			m_HighScore = 0;
 			m_Streak = 0;
+			m_Turns = 0;
 		}
 		#endregion Unity Methods
 	}

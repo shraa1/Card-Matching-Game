@@ -8,8 +8,12 @@ namespace Shraa1.CardGame.Core {
 		/// </summary>
 		GameInfo GameInfo { get; }
 
+		CardInfo CardInfo { get; }
+
 		void StartGame(int x, int y);
 
 		void SetGameView(MonoBehaviour gameView);
+
+		void GameOver();
 	}
 }

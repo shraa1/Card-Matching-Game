@@ -6,6 +6,10 @@ using UnityEngine;
 
 namespace Shraa1.CardGame.Controllers {
 	public class CardManager : MonoBehaviour, ICardManagerService {
+		#region Variables
+		private ICard m_CurrentlyOpenCard;
+		#endregion Variables
+
 		#region Properties
 		private IGameManagerService GameManager => GlobalReferences.GameManagerService;
 		#endregion Properties
@@ -27,9 +31,39 @@ namespace Shraa1.CardGame.Controllers {
 			sprites.Shuffle();
 
 			for (var i = 0; i < count; i++)
-				inUse[i].Init(sprites[i], GameManager.GameInfo.BackCardSprite);
+				inUse[i].Init(sprites[i]);
 		}
-		#endregion Inspector Implementation
+
+		public void OnCardSelected(ICard card) {
+			//A first card was already selected, now second is selected. Then 
+			if (m_CurrentlyOpenCard != null) {
+				GlobalReferences.StatsManagerService.SetTurns(GlobalReferences.StatsManagerService.Turns + 1);
+				if (m_CurrentlyOpenCard.FrontFacingCardSprite == card.FrontFacingCardSprite) {
+					GlobalReferences.StatsManagerService.SetStreak(GlobalReferences.StatsManagerService.Streak + 1);
+					GlobalReferences.StatsManagerService.UpdateScore();
+					var c = m_CurrentlyOpenCard as Card;
+					StartCoroutine((card as Card).WaitForCardFlipToFinish(() => {
+						ObjectPool<Card>.FreeToPool(card as Card);
+						ObjectPool<Card>.FreeToPool(c);
+						if (ObjectPool<Card>.AllInUseItems.Count == 0)
+							GameManager.GameOver();
+					}));
+				}
+				else {
+					GlobalReferences.StatsManagerService.SetStreak(0);
+					var c = m_CurrentlyOpenCard as Card;
+					StartCoroutine((card as Card).WaitForCardFlipToFinish(() => {
+						c.HideCard();
+						card.HideCard();
+					}));
+				}
+				m_CurrentlyOpenCard = null;
+				return;
+			}
+
+			m_CurrentlyOpenCard = card;
+		}
+#endregion Inspector Implementation
 
 		#region Unity Methods
 		private void Start() {
