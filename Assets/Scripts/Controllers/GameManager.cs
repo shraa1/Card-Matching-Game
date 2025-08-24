@@ -30,12 +30,16 @@ namespace Shraa1.CardGame.Controllers {
 			m_GameView.UseLayoutGroup(true);
 			m_GameView.Init(x, y);
 			StartCoroutine(WaitForGameSceneInitializations(x, y));
+			GlobalReferences.StatsManagerService.Reset();
 		}
 
 		//TODO Create an interface instead of MonoBehaviour
 		public void SetGameView(MonoBehaviour gameView) => m_GameView = gameView as GameView;
 
-		public void GameOver() => m_LobbyView.CloseGameScene();
+		public void GameOver() {
+			m_LobbyView.CloseGameScene();
+			GlobalReferences.StatsManagerService.Reset();
+		}
 		#endregion Inspector Implementation
 
 		#region Private Methods

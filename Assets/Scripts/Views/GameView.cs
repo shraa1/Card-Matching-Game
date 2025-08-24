@@ -9,6 +9,9 @@ namespace Shraa1.CardGame.Views {
 	public class GameView : MonoBehaviour {
 		#region Inspector Variables
 		[SerializeField] private GridLayoutGroup m_GridLayoutGroup;
+		[SerializeField] private Text m_ScoreText;
+		[SerializeField] private Text m_TurnsText;
+		[SerializeField] private Text m_StreakText;
 		#endregion Inspector Variables
 
 		#region Variables
@@ -16,14 +19,34 @@ namespace Shraa1.CardGame.Views {
 		private static readonly Dictionary<int, int> CELL_SIZES = new() {
 			{ 2, 500 }, { 3, 500 }, { 4, 450 }, { 5, 350 }, { 6, 250 },
 		};
+
 		private GameInfo m_GameInfo;
+
+		private const string SCORE_TEXT_BASE = "Score: {0}";
+		private const string TURN_TEXT_BASE = "Turn: {0}";
+		private const string STREAK_TEXT_BASE = "Streak: {0}";
 		#endregion Variables
 
 		#region Unity Methods
 		private void Awake() {
 			GlobalReferences.GameManagerService.SetGameView(this);
+			GlobalReferences.StatsManagerService.OnScoreUpdated += UpdateScore;
+			GlobalReferences.StatsManagerService.OnTurnUpdated += UpdateTurns;
+			GlobalReferences.StatsManagerService.OnStreakUpdated += UpdateStreak;
+		}
+
+		private void OnDestroy() {
+			GlobalReferences.StatsManagerService.OnScoreUpdated -= UpdateScore;
+			GlobalReferences.StatsManagerService.OnTurnUpdated -= UpdateTurns;
+			GlobalReferences.StatsManagerService.OnStreakUpdated -= UpdateStreak;
 		}
 		#endregion Unity Methods
+
+		#region Private Helper Methods
+		private void UpdateScore() => m_ScoreText.text = string.Format(SCORE_TEXT_BASE, GlobalReferences.StatsManagerService.Score);
+		private void UpdateTurns() => m_TurnsText.text = string.Format(TURN_TEXT_BASE, GlobalReferences.StatsManagerService.Turns);
+		private void UpdateStreak() => m_StreakText.text = string.Format(STREAK_TEXT_BASE, GlobalReferences.StatsManagerService.Streak);
+		#endregion Private Helper Methods
 
 		#region Public Helper Methods
 		public void UseLayoutGroup(bool activateLayoutGroup) => m_GridLayoutGroup.enabled = activateLayoutGroup;

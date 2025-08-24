@@ -32,15 +32,32 @@ namespace Shraa1.CardGame.Views {
 		/// Lobby Canvas reference to enable disable on switching to game
 		/// </summary>
 		[SerializeField] private Canvas m_LobbyCanvas;
+
+		/// <summary>
+		/// Set High Score's text
+		/// </summary>
+		[SerializeField] private Text m_HighScoreText;
 		#endregion Inspector Variables
 
 		#region Variables & Consts
 		private const string GAME_SCENE_NAME = "Game Scene";
+		private const string HIGH_SCORE_TEXT = "High Score: {0}";
 		#endregion Variables & Consts
 
 		#region Properties
 		private IGameManagerService GameManagerService => GlobalReferences.GameManagerService;
 		#endregion Properties
+
+		#region Unity Methods
+		private void Start() {
+			GlobalReferences.StatsManagerService.OnHighScoreUpdated += UpdateHS;
+			UpdateHS();
+		}
+
+		private void OnDestroy() {
+			GlobalReferences.StatsManagerService.OnHighScoreUpdated -= UpdateHS;
+		}
+		#endregion Unity Methods
 
 		#region Public Helper Methods
 		/// <summary>
@@ -69,6 +86,8 @@ namespace Shraa1.CardGame.Views {
 		#endregion Public Helper Methods
 
 		#region Private Helper Methods
+		private void UpdateHS() => m_HighScoreText.text = string.Format(HIGH_SCORE_TEXT, GlobalReferences.StatsManagerService.HighScore);
+
 		/// <summary>
 		/// Play Game Button Clicked
 		/// </summary>

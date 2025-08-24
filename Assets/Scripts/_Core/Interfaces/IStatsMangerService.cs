@@ -1,3 +1,5 @@
+using System;
+
 namespace Shraa1.CardGame.Core {
 	public interface IStatsMangerService : IService {
 		/// <summary>
@@ -46,5 +48,10 @@ namespace Shraa1.CardGame.Core {
 		/// </summary>
 		/// <param name="turns">New turns count</param>
 		void SetTurns(int turns);
+
+		Action OnScoreUpdated { get; set; }
+		Action OnTurnUpdated { get; set; }
+		Action OnStreakUpdated { get; set; }
+		Action OnHighScoreUpdated { get; set; }
 	}
 }

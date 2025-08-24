@@ -39,8 +39,11 @@ namespace Shraa1.CardGame.Controllers {
 			if (m_CurrentlyOpenCard != null) {
 				GlobalReferences.StatsManagerService.SetTurns(GlobalReferences.StatsManagerService.Turns + 1);
 				if (m_CurrentlyOpenCard.FrontFacingCardSprite == card.FrontFacingCardSprite) {
-					GlobalReferences.StatsManagerService.SetStreak(GlobalReferences.StatsManagerService.Streak + 1);
 					GlobalReferences.StatsManagerService.UpdateScore();
+
+					if (GlobalReferences.StatsManagerService.Score > GlobalReferences.StatsManagerService.HighScore)
+						GlobalReferences.StatsManagerService.NewHighScore();
+					GlobalReferences.StatsManagerService.SetStreak(GlobalReferences.StatsManagerService.Streak + 1);
 					var c = m_CurrentlyOpenCard as Card;
 					StartCoroutine((card as Card).WaitForCardFlipToFinish(() => {
 						ObjectPool<Card>.FreeToPool(card as Card);
