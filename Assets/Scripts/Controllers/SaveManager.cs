@@ -15,7 +15,6 @@ namespace Shraa1.CardGame.Controllers {
 
 		private void OnDestroy() {
 			GlobalReferences.Unregister<ISaveManagerService>();
-			GlobalReferences.StatsManagerService.OnHighScoreUpdated -= Save;
 		}
 		#endregion Interface Implementation
 

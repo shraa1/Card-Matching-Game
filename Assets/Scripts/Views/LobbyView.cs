@@ -53,10 +53,6 @@ namespace Shraa1.CardGame.Views {
 			GlobalReferences.StatsManagerService.OnHighScoreUpdated += UpdateHS;
 			UpdateHS();
 		}
-
-		private void OnDestroy() {
-			GlobalReferences.StatsManagerService.OnHighScoreUpdated -= UpdateHS;
-		}
 		#endregion Unity Methods
 
 		#region Public Helper Methods
