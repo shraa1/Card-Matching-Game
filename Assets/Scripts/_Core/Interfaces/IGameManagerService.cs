@@ -9,5 +9,7 @@ namespace Shraa1.CardGame.Core {
 		GameInfo GameInfo { get; }
 
 		void StartGame(int x, int y);
+
+		void SetGameView(MonoBehaviour gameView);
 	}
 }

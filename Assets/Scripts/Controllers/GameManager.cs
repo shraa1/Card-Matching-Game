@@ -13,18 +13,28 @@ namespace Shraa1.CardGame.Controllers {
 		[SerializeField] private LobbyView m_LobbyView;
 
 		[SerializeField] private GameInfo m_GameInfo;
+		[SerializeField] private Card m_CardPrefabTemplate;
 		#endregion Inspector Variables
+
+		#region Variables
+		private GameView m_GameView;
+		#endregion Variables
 
 		#region Inspector Implementation
 		public GameInfo GameInfo { get => m_GameInfo; }
 
 		public void StartGame(int x, int y) {
+			m_GameView.Init(x, y);
 		}
+
+		//TODO Create an interface instead of MonoBehaviour
+		public void SetGameView(MonoBehaviour gameView) => m_GameView = gameView as GameView;
 		#endregion Inspector Implementation
 
 		#region Unity Methods
 		private void Start() {
 			GlobalReferences.Register<IGameManagerService>(this);
+			ObjectPool<Card>.SetTemplate(m_CardPrefabTemplate);
 			m_LobbyView.Init();
 		}
 

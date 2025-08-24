@@ -308,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LobbyView: {fileID: 880566675}
   m_GameInfo: {fileID: 11400000, guid: 4abd8c63a838c4637b0ebb9a44f280e1, type: 2}
+  m_CardPrefabTemplate: {fileID: 6544946235695398662, guid: 7c1480581993f4e6f8363a4755d08aa4, type: 3}
 --- !u!1 &287009633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,7 +1593,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
