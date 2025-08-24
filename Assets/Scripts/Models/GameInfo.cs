@@ -32,7 +32,7 @@ namespace Shraa1.CardGame.Models {
 		/// <summary>
 		/// Front Card Sprites
 		/// </summary>
-		public Sprite[] FrontCardSprite { get => m_FrontCardSprites; }
+		public Sprite[] FrontCardSprites { get => m_FrontCardSprites; }
 
 		/// <summary>
 		/// Back Card Face Sprite

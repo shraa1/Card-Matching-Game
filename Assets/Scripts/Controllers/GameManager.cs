@@ -1,3 +1,4 @@
+using System.Collections;
 using Shraa1.CardGame.Core;
 using Shraa1.CardGame.Flyweights;
 using Shraa1.CardGame.Models;
@@ -25,11 +26,21 @@ namespace Shraa1.CardGame.Controllers {
 
 		public void StartGame(int x, int y) {
 			m_GameView.Init(x, y);
+			StartCoroutine(WaitForGameSceneInitializations(x, y));
 		}
 
 		//TODO Create an interface instead of MonoBehaviour
 		public void SetGameView(MonoBehaviour gameView) => m_GameView = gameView as GameView;
 		#endregion Inspector Implementation
+
+		#region Private Methods
+		//TODO This should be done using IConfigurable, not like this
+		private IEnumerator WaitForGameSceneInitializations(int x, int y) {
+			while (GlobalReferences.CardManagerService == null)
+				yield return null;
+			GlobalReferences.CardManagerService.GameStarted(x, y);
+		}
+		#endregion Private Methods
 
 		#region Unity Methods
 		private void Start() {

@@ -15,7 +15,11 @@ namespace Shraa1.CardGame.Flyweights {
 		/// <summary>
 		/// Get the Stats Manager
 		/// </summary>
-		public static IStatsMangerService StatsService => GlobalServiceProvider.Get<IStatsMangerService>();
+		public static IStatsMangerService StatsManagerService => GlobalServiceProvider.Get<IStatsMangerService>();
+		/// <summary>
+		/// Card Manager
+		/// </summary>
+		public static ICardManagerService CardManagerService => GlobalServiceProvider.Get<ICardManagerService>();
 		#endregion Properties
 
 		#region Publlic Helper Methods

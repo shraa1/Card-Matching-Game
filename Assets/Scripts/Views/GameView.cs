@@ -16,6 +16,7 @@ namespace Shraa1.CardGame.Views {
 		private static readonly Dictionary<int, int> CELL_SIZES = new() {
 			{ 2, 500 }, { 3, 500 }, { 4, 450 }, { 5, 350 }, { 6, 250 },
 		};
+		private GameInfo m_GameInfo;
 		#endregion Variables
 
 		#region Unity Methods
