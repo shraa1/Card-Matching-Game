@@ -22,8 +22,8 @@ namespace Shraa1.CardGame.Controllers {
 		/// <summary>
 		/// Set High Score
 		/// </summary>
-		public void NewHighScore() {
-			m_HighScore = Score;
+		public void SetHighScore(int newHighScore) {
+			m_HighScore = newHighScore;
 			OnHighScoreUpdated?.Invoke();
 		}
 

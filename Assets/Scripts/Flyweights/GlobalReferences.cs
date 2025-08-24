@@ -24,6 +24,10 @@ namespace Shraa1.CardGame.Flyweights {
 		/// Audio Manager
 		/// </summary>
 		public static IAudioManagerService AudioManagerService => GlobalServiceProvider.Get<IAudioManagerService>();
+		/// <summary>
+		/// Save and Load Data Manager Service
+		/// </summary>
+		public static ISaveManagerService SaveManagerService => GlobalServiceProvider.Get<ISaveManagerService>();
 		#endregion Properties
 
 		#region Publlic Helper Methods

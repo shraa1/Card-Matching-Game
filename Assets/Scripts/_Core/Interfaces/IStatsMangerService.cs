@@ -30,7 +30,7 @@ namespace Shraa1.CardGame.Core {
 		/// <summary>
 		/// New High Score Reached
 		/// </summary>
-		void NewHighScore();
+		void SetHighScore(int newHighScore);
 
 		/// <summary>
 		/// Reset Stats

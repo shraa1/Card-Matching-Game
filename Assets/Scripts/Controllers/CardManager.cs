@@ -42,8 +42,9 @@ namespace Shraa1.CardGame.Controllers {
 					GlobalReferences.StatsManagerService.UpdateScore();
 					GlobalReferences.AudioManagerService.Play("Match");
 
+					//Create a property for statsman above
 					if (GlobalReferences.StatsManagerService.Score > GlobalReferences.StatsManagerService.HighScore)
-						GlobalReferences.StatsManagerService.NewHighScore();
+						GlobalReferences.StatsManagerService.SetHighScore(GlobalReferences.StatsManagerService.Score);
 					GlobalReferences.StatsManagerService.SetStreak(GlobalReferences.StatsManagerService.Streak + 1);
 					var c = m_CurrentlyOpenCard as Card;
 					StartCoroutine((card as Card).WaitForCardFlipToFinish(() => {
