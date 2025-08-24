@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Shraa1.CardGame.Core;
 using Shraa1.CardGame.Flyweights;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,15 +23,31 @@ namespace Shraa1.CardGame.Views {
 		/// </summary>
 		[SerializeField] private Dropdown m_GridSizeY;
 
+		/// <summary>
+		/// Play Button
+		/// </summary>
 		[SerializeField] private Button m_PlayGameBtn;
+
+		/// <summary>
+		/// Lobby Canvas reference to enable disable on switching to game
+		/// </summary>
+		[SerializeField] private Canvas m_LobbyCanvas;
 		#endregion Inspector Variables
+
+		#region Variables & Consts
+		private const string GAME_SCENE_NAME = "Game Scene";
+		#endregion Variables & Consts
+
+		#region Properties
+		private IGameManagerService GameManagerService => GlobalReferences.GameManagerService;
+		#endregion Properties
 
 		#region Public Helper Methods
 		/// <summary>
 		/// Set up things at the beginning
 		/// </summary>
 		public void Init() {
-			var info = GlobalReferences.GameService.GameInfo;
+			var info = GameManagerService.GameInfo;
 			var list = new List<string>(info.GridSizeMax.x - info.GridSizeMin.x + 1);
 			for (var i = info.GridSizeMin.x; i <= info.GridSizeMax.x; i++)
 				list.Add(i.ToString());
@@ -47,9 +64,25 @@ namespace Shraa1.CardGame.Views {
 		#endregion Public Helper Methods
 
 		#region Private Helper Methods
+		/// <summary>
+		/// Play Game Button Clicked
+		/// </summary>
 		private void PlayGame() {
-			SceneManager.LoadScene("Game Scene", LoadSceneMode.Additive);
+			var x = int.Parse(m_GridSizeX.options[m_GridSizeX.value].text);
+			var y = int.Parse(m_GridSizeY.options[m_GridSizeY.value].text);
+
+			void SceneLoaded(Scene arg0, LoadSceneMode arg1) {
+				SceneManager.sceneLoaded -= SceneLoaded;
+				if (arg0.name.StartsWith(GAME_SCENE_NAME)) {
+					m_LobbyCanvas.enabled = false;
+					GameManagerService.StartGame(x, y);
+				}
+			}
+
+			SceneManager.sceneLoaded += SceneLoaded;
+			SceneManager.LoadScene(GAME_SCENE_NAME, LoadSceneMode.Additive);
 		}
+
 		#endregion Private Helper Methods
 	}
 }

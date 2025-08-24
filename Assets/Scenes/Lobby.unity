@@ -1230,6 +1230,7 @@ MonoBehaviour:
   m_GridSizeX: {fileID: 1825921929}
   m_GridSizeY: {fileID: 1608775859}
   m_PlayGameBtn: {fileID: 935273051}
+  m_LobbyCanvas: {fileID: 1100512033}
 --- !u!1 &935273049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,7 +1518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1092835423}
   m_Layer: 0
-  m_Name: ------------------------------------- VIEWS -----------------------------------------------------------------------------------
+  m_Name: ------------------------------------- VIEW SCRIPTS -------------------------------------------------------------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1551,7 +1552,7 @@ GameObject:
   - component: {fileID: 1100512032}
   - component: {fileID: 1100512031}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canv_Lobby Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
